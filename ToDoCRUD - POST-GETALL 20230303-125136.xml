@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ToDoCRUD - POST-GETALL" project="ToDoCRUD - POST-GETALL" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="com.ashutosh.todocrud.services.TodoServicesTest" time="1.011" displayname="Testing TodoServicesTest" uniqueid="[engine:junit-jupiter]/[class:com.ashutosh.todocrud.services.TodoServicesTest]">
+    <testcase name="getAllTodoSuccess" classname="com.ashutosh.todocrud.services.TodoServicesTest" time="1.001" displayname="Testing Success of Getting All Todos" uniqueid="[engine:junit-jupiter]/[class:com.ashutosh.todocrud.services.TodoServicesTest]/[method:getAllTodoSuccess()]"/>
+    <testcase name="addTodoSuccess" classname="com.ashutosh.todocrud.services.TodoServicesTest" time="0.008" displayname="Testing Success of Adding Todo" uniqueid="[engine:junit-jupiter]/[class:com.ashutosh.todocrud.services.TodoServicesTest]/[method:addTodoSuccess()]"/>
+  </testsuite>
+  <testsuite name="com.ashutosh.todocrud.repository.ToDoRepositoryTest" time="0.259" displayname="ToDoRepositoryTest" uniqueid="[engine:junit-jupiter]/[class:com.ashutosh.todocrud.repository.ToDoRepositoryTest]">
+    <testcase name="saveToDoTest" classname="com.ashutosh.todocrud.repository.ToDoRepositoryTest" time="0.259" displayname="saveToDoTest()" uniqueid="[engine:junit-jupiter]/[class:com.ashutosh.todocrud.repository.ToDoRepositoryTest]/[method:saveToDoTest()]"/>
+  </testsuite>
+  <testsuite name="com.ashutosh.todocrud.controller.UserControllerTest" time="0.255" displayname="UserControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.ashutosh.todocrud.controller.UserControllerTest]">
+    <testcase name="addTodo" classname="com.ashutosh.todocrud.controller.UserControllerTest" time="0.208" displayname="addTodo()" uniqueid="[engine:junit-jupiter]/[class:com.ashutosh.todocrud.controller.UserControllerTest]/[method:addTodo()]"/>
+    <testcase name="getAllTodos" classname="com.ashutosh.todocrud.controller.UserControllerTest" time="0.045" displayname="getAllTodos()" uniqueid="[engine:junit-jupiter]/[class:com.ashutosh.todocrud.controller.UserControllerTest]/[method:getAllTodos()]"/>
+  </testsuite>
+  <testsuite name="com.ashutosh.todocrud.ToDoCrudApplicationTests" time="0.004" displayname="ToDoCrudApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.ashutosh.todocrud.ToDoCrudApplicationTests]">
+    <testcase name="contextLoads" classname="com.ashutosh.todocrud.ToDoCrudApplicationTests" time="0.004" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.ashutosh.todocrud.ToDoCrudApplicationTests]/[method:contextLoads()]"/>
+  </testsuite>
+</testrun>
