@@ -15,8 +15,22 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import static org.mockito.Mockito.*;
+import org.mockito.verification.VerificationMode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+@ContextConfiguration(classes = {TodoServices.class})
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Testing TodoServicesTest")
 class TodoServicesTest {
@@ -28,25 +42,35 @@ class TodoServicesTest {
     private Todo todo;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         todoServices = new TodoServices(toDoRepository);
     }
 
+    /**
+     * Method under test: {@link TodoServices#addTodo(Todo)}
+     */
     @Test
-    @DisplayName("Testing Success of Adding Todo")
-    void addTodoSuccess() {
-        todo = new Todo();
-        todo.setId(1L);
-        todo.setContent("test Todo");
+    void testAddTodo() {
+        when(toDoRepository.save((Todo) any())).thenReturn(new Todo("Not all who wander are lost"));
+        Todo todo = new Todo("Not all who wander are lost");
         todoServices.addTodo(todo);
-        verify(toDoRepository,times(1).description("You did not make a call to the todo Repository")).save(todo);
+        verify(toDoRepository,description("You did not make a call to the todo Repository")).save((Todo) any());
+        assertFalse(todo.getCompleted());
+        assertEquals(0L, todo.getId());
+        assertEquals("Not all who wander are lost", todo.getContent());
     }
 
+    /**
+     * Method under test: {@link TodoServices#getAllTodo()}
+     */
     @Test
-    @DisplayName("Testing Success of Getting All Todos")
-    void getAllTodoSuccess(){
-        Assertions.assertEquals(new ArrayList<Todo>(),todoServices.getAllTodo(),"The Todo service is not returning list of Todos");
-        verify(toDoRepository,times(1).description("You did not make a call to the todo Repository")).findAll();
+    void testGetAllTodo() {
+        ArrayList<Todo> todoList = new ArrayList<>();
+        when(toDoRepository.findAll()).thenReturn(todoList);
+        List<Todo> actualAllTodo = todoServices.getAllTodo();
+        assertSame(todoList, actualAllTodo,"The Todo service is not returning required list of Todos");
+        assertTrue(actualAllTodo.isEmpty(), "The Todo service is not returning required list of Todos");
+        verify(toDoRepository, description("You did not make a call to the todo Repository")).findAll();
     }
 
 }
