@@ -23,7 +23,6 @@ public class TodoServices {
     }
 
     public List<Todo> getAllTodo() {
-        return new ArrayList<Todo>();
-        //return toDoRepository.findAll();
+        return toDoRepository.findAll();
     }
 }
